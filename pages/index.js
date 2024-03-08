@@ -17,8 +17,8 @@ export default function Home() {
           two million works;[1] it currently lists a total of 1.5 million
           objects.[6] The collection is divided into 17 curatorial departments.
           The main building at 1000 Fifth Avenue, along the Museum Mile on the
-          eastern edge of Central Park on Manhattan's Upper East Side, is by
-          area one of the world's largest art museums. The first portion of the
+          eastern edge of Central Park on Manhattan&apos;s Upper East Side, is by
+          area one of the world&apos;s largest art museums. The first portion of the
           approximately 2-million-square-foot (190,000 m2) building was built in
           1880. A much smaller second location, The Cloisters at Fort Tryon Park
           in Upper Manhattan, contains an extensive collection of art,
@@ -26,7 +26,7 @@ export default function Home() {
         </Col>
         <Col md={6}>
           The Metropolitan Museum of Art was founded in 1870 with its mission to
-          bring art and art education to the American people. The museum's
+          bring art and art education to the American people. The museum&apos;s
           permanent collection consists of works of art ranging from the ancient
           Near East and ancient Egypt, through classical antiquity to the
           contemporary world. It includes paintings, sculptures, and graphic
