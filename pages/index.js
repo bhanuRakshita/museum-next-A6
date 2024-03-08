@@ -1,11 +1,30 @@
+/*********************************************************************************
+*  WEB422 – Assignment 4
+*
+*  I declare that this assignment is my own work in accordance with Seneca's
+*  Academic Integrity Policy:
+* 
+*  https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html
+* 
+*  Name: Bhanu Rakshita Paul   Student ID: 143428217    Date: March 8, 2024
+*  Github Link: https://github.com/bhanuRakshita/museum-next-A4
+*  Render Link: https://museum-next-a4.onrender.com/
+*
+********************************************************************************/ 
+
+
 import { Row, Col, Image } from "react-bootstrap";
 
 export default function Home() {
   return (
     <>
-
-      <Image src="https://upload.wikimedia.org/wikipedia/commons/3/30/Metropolitan_Museum_of_Art_%28The_Met%29_-_Central_Park%2C_NYC.jpg" fluid rounded/>
-  <br/><br/>
+      <Image
+        src="https://upload.wikimedia.org/wikipedia/commons/3/30/Metropolitan_Museum_of_Art_%28The_Met%29_-_Central_Park%2C_NYC.jpg"
+        fluid
+        rounded
+      />
+      <br />
+      <br />
       <Row>
         <Col md={6}>
           The Metropolitan Museum of Art, colloquially referred to as the
@@ -17,12 +36,12 @@ export default function Home() {
           two million works;[1] it currently lists a total of 1.5 million
           objects.[6] The collection is divided into 17 curatorial departments.
           The main building at 1000 Fifth Avenue, along the Museum Mile on the
-          eastern edge of Central Park on Manhattan&apos;s Upper East Side, is by
-          area one of the world&apos;s largest art museums. The first portion of the
-          approximately 2-million-square-foot (190,000 m2) building was built in
-          1880. A much smaller second location, The Cloisters at Fort Tryon Park
-          in Upper Manhattan, contains an extensive collection of art,
-          architecture, and artifacts from medieval Europe.
+          eastern edge of Central Park on Manhattan&apos;s Upper East Side, is
+          by area one of the world&apos;s largest art museums. The first portion
+          of the approximately 2-million-square-foot (190,000 m2) building was
+          built in 1880. A much smaller second location, The Cloisters at Fort
+          Tryon Park in Upper Manhattan, contains an extensive collection of
+          art, architecture, and artifacts from medieval Europe.
         </Col>
         <Col md={6}>
           The Metropolitan Museum of Art was founded in 1870 with its mission to
@@ -38,8 +57,15 @@ export default function Home() {
           well as antique weapons and armor from around the world. Several
           notable interiors, ranging from 1st-century Rome through modern
           American design, are installed in its galleries.
-<br/><br/>
-          <a href="https://en.wikipedia.org/wiki/Metropolitan_Museum_of_Art" target="_blank" rel="noreferrer">https://en.wikipedia.org/wiki/Metropolitan_Museum_of_Art</a>
+          <br />
+          <br />
+          <a
+            href="https://en.wikipedia.org/wiki/Metropolitan_Museum_of_Art"
+            target="_blank"
+            rel="noreferrer"
+          >
+            https://en.wikipedia.org/wiki/Metropolitan_Museum_of_Art
+          </a>
         </Col>
       </Row>
     </>
