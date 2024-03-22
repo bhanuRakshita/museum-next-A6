@@ -16,7 +16,7 @@ function MainNav() {
   const [isExpanded, setIsExpanded] = useState(false);
   const submitHandler = (e) => {
     e.preventDefault();
-    isExpanded(false);
+    setIsExpanded(false);
     searchRouter.push(`/artwork?title=true&q=${encodeURIComponent(searchField)}`);
   }
 
