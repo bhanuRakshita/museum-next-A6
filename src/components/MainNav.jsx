@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRoute } from "next/router";
+import { useAtom } from "jotai";
 
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -10,13 +11,19 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useRouter } from "next/router";
 
+import { searchHistoryAtom } from "@/store";
+
 function MainNav() {
   const searchRouter = useRouter();
   const [searchField, setSearchField] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
+  const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
+
   const submitHandler = (e) => {
+    let queryString = `/artwork?title=true&q=${encodeURIComponent(searchField)}`;
     e.preventDefault();
     setIsExpanded(false);
+    setSearchHistory(current => [...current, queryString]);
     searchRouter.push(
       `/artwork?title=true&q=${encodeURIComponent(searchField)}`
     );

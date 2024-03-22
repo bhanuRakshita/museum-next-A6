@@ -1,9 +1,13 @@
 import { useRouter } from "next/router";
 import { useForm } from 'react-hook-form';
 import { Form, Row, Col, Button } from "react-bootstrap";
+import { useAtom } from "jotai";
+
+import { searchHistoryAtom } from "@/store";
 
 const AdvancedSearch = () => {
     const router = useRouter();
+    const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
 
     const { register, handleSubmit } = useForm();
 
@@ -29,6 +33,8 @@ const AdvancedSearch = () => {
         if (data.q) {
           queryString += `&q=${encodeURIComponent(data.q)}`;
         }
+
+        setSearchHistory(current => [...current, queryString]);
     
         router.push(`/artwork?${queryString}`);
       };
