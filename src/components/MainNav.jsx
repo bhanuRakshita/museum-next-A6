@@ -36,10 +36,10 @@ function MainNav() {
         <Navbar.Collapse id="navbarScroll">
         <Nav className="me-auto">
               <Link href="/" passHref legacyBehavior>
-                <Nav.Link onClick={toggleIsExpanded}>Home</Nav.Link>
+                <Nav.Link onClick={()=>{setIsExpanded(false)}}>Home</Nav.Link>
               </Link>
               <Link href="/search" passHref legacyBehavior >
-                <Nav.Link onClick={toggleIsExpanded}>Advanced Search</Nav.Link>
+                <Nav.Link onClick={()=>{setIsExpanded(false)}}>Advanced Search</Nav.Link>
               </Link>
             </Nav>
           <Form className="d-flex" onSubmit={submitHandler}>
