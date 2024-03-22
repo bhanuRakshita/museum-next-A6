@@ -4,6 +4,7 @@ import Error from "next/error";
 import { Col, Row, Pagination } from "react-bootstrap";
 import useSWR from "swr";
 
+import validObjectIDList from '@/public/data/validObjectIDList.json';
 import ArtworkCard from "@/src/components/ArtworkCard";
 
 const Artwork = () => {
@@ -20,10 +21,13 @@ const Artwork = () => {
       );
 
   useEffect(() => {
+
     if (data) {
+      let filteredResults = validObjectIDList.objectIDs.filter(x => data.objectIDs?.includes(x));
+
       let results = [];
-      for (let i = 0; i < data?.objectIDs?.length; i += PER_PAGE) {
-        const chunk = data?.objectIDs.slice(i, i + PER_PAGE);
+      for (let i = 0; i < filteredResults?.length; i += PER_PAGE) {
+        const chunk = filteredResults.slice(i, i + PER_PAGE);
         results.push(chunk);
       }
 
