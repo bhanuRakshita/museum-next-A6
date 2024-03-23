@@ -20,7 +20,7 @@ function MainNav() {
   const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
 
   const submitHandler = (e) => {
-    let queryString = `/artwork?title=true&q=${encodeURIComponent(searchField)}`;
+    let queryString = `title=true&q=${encodeURIComponent(searchField)}`;
     e.preventDefault();
     setIsExpanded(false);
     setSearchHistory(current => [...current, queryString]);
