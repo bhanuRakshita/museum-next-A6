@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { ListGroup, Button } from "react-bootstrap";
 
 import { searchHistoryAtom } from "@/store";
-import styles from '@/styles/History.module.css';
+import styles from "@/styles/History.module.css";
 
 const History = () => {
   const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
@@ -30,43 +30,43 @@ const History = () => {
       return x;
     });
   };
-};
 
-if (parsedHistory.length == 0) {
+  if (parsedHistory.length == 0) {
+    return (
+      <>
+        <h1>Nothing Here: Try searching for some art work</h1>
+      </>
+    );
+  }
+
   return (
     <>
-      <h1>Nothing Here: Try searching for some art work</h1>
+      <ListGroup>
+        {parsedHistory.map((historyItem, index) => (
+          <ListGroup.Item
+            className={styles.historyListItem}
+            onClick={() => {
+              historyClicked(e, index);
+            }}
+          >
+            {Object.keys(historyItem).map((key) => (
+              <>
+                {key}: <strong>{historyItem[key]}</strong>&nbsp;
+              </>
+            ))}
+            <Button
+              className="float-end"
+              variant="danger"
+              size="sm"
+              onClick={(e) => removeHistoryClicked(e, index)}
+            >
+              &times;
+            </Button>
+          </ListGroup.Item>
+        ))}
+      </ListGroup>
     </>
   );
-}
-
-return (
-  <>
-    <ListGroup>
-      {parsedHistory.map((historyItem, index) => (
-        <ListGroup.Item
-          className={styles.historyListItem}
-          onClick={() => {
-            historyClicked(e, index);
-          }}
-        >
-          {Object.keys(historyItem).map((key) => (
-            <>
-              {key}: <strong>{historyItem[key]}</strong>&nbsp;
-            </>
-          ))}
-          <Button
-            className="float-end"
-            variant="danger"
-            size="sm"
-            onClick={(e) => removeHistoryClicked(e, index)}
-          >
-            &times;
-          </Button>
-        </ListGroup.Item>
-      ))}
-    </ListGroup>
-  </>
-);
+};
 
 export default History;

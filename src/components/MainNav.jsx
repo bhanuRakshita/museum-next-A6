@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import { searchHistoryAtom } from "@/store";
 
 function MainNav() {
-  const searchRouter = useRouter();
+  const router = useRouter();
   const [searchField, setSearchField] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
   const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
@@ -24,7 +24,7 @@ function MainNav() {
     e.preventDefault();
     setIsExpanded(false);
     setSearchHistory(current => [...current, queryString]);
-    searchRouter.push(
+    router.push(
       `/artwork?title=true&q=${encodeURIComponent(searchField)}`
     );
   };
@@ -53,6 +53,7 @@ function MainNav() {
           <Nav className="me-auto">
             <Link href="/" passHref legacyBehavior>
               <Nav.Link
+              active={router.pathname === "/"}
                 onClick={() => {
                   setIsExpanded(false);
                 }}
@@ -62,6 +63,7 @@ function MainNav() {
             </Link>
             <Link href="/search" passHref legacyBehavior>
               <Nav.Link
+              active={router.pathname === "/search"}
                 onClick={() => {
                   setIsExpanded(false);
                 }}
@@ -84,20 +86,24 @@ function MainNav() {
             </Button>
           </Form>
           &nbsp;
-          <Nav>
+          
             <NavDropdown title="User Name" id="basic-nav-dropdown">
               <Link href="/favourites" passHref legacyBehavior>
-                <NavDropdown.Item>
+                <NavDropdown.Item active={router.pathname === "/favourites"} onClick={() => {
+                  setIsExpanded(false);
+                }}>
                   Favourites
                 </NavDropdown.Item>
               </Link>
-              <Link href="/favourites" passHref legacyBehavior>
-                <NavDropdown.Item>
+              <Link href="/history" passHref legacyBehavior>
+                <NavDropdown.Item  active={router.pathname === "/history"} onClick={() => {
+                  setIsExpanded(false);
+                }}>
                   Search History
                 </NavDropdown.Item>
               </Link>
             </NavDropdown>
-          </Nav>
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>
