@@ -44,6 +44,7 @@ const History = () => {
       <ListGroup>
         {parsedHistory.map((historyItem, index) => (
           <ListGroup.Item
+          key={index}
             className={styles.historyListItem}
             onClick={() => {
               historyClicked(e, index);
