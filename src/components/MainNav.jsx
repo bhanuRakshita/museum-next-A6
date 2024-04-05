@@ -59,38 +59,7 @@ function MainNav() {
         />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto">
-            {!token && <nav>
-              <Link href="/" passHref legacyBehavior>
-              <Nav.Link
-              active={router.pathname === "/"}
-                onClick={() => {
-                  setIsExpanded(false);
-                }}
-              >
-                Home
-              </Nav.Link>
-            </Link>
-            <Link href="/register" passHref legacyBehavior>
-              <Nav.Link
-              active={router.pathname === "/"}
-                onClick={() => {
-                  setIsExpanded(false);
-                }}
-              >
-                Register
-              </Nav.Link>
-            </Link>
-            <Link href="/login" passHref legacyBehavior>
-              <Nav.Link
-              active={router.pathname === "/"}
-                onClick={() => {
-                  setIsExpanded(false);
-                }}
-              >
-                Login
-              </Nav.Link>
-            </Link>
-              </nav>}
+            
             <Link href="/" passHref legacyBehavior>
               <Nav.Link
               active={router.pathname === "/"}
@@ -101,6 +70,26 @@ function MainNav() {
                 Home
               </Nav.Link>
             </Link>
+            {!token && <Link href="/login" passHref legacyBehavior>
+              <Nav.Link
+              active={router.pathname === "/"}
+                onClick={() => {
+                  setIsExpanded(false);
+                }}
+              >
+                Login
+              </Nav.Link>
+            </Link>}
+            {!token && <Link href="/register" passHref legacyBehavior>
+              <Nav.Link
+              active={router.pathname === "/"}
+                onClick={() => {
+                  setIsExpanded(false);
+                }}
+              >
+                Register
+              </Nav.Link>
+            </Link>}
             {token && <Link href="/search" passHref legacyBehavior>
               <Nav.Link
               active={router.pathname === "/search"}
