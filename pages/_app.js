@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "@/src/components/Layout";
 import { SWRConfig } from "swr";
+import RouteGuard from "@/src/components/RouteGuard";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -25,9 +26,11 @@ export default function App({ Component, pageProps }) {
         },
       }}
     >
+      <RouteGuard>
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      </RouteGuard>
     </SWRConfig>
   );
 }

@@ -6,7 +6,7 @@ import ArtworkCard from "@/src/components/ArtworkCard";
 const Favourites = () => {
 
     const [favouritesList, setFavouritesList] = useAtom(favouritesAtom);
-
+    if(!favouritesList) return null;
     if(favouritesList) {
         return (
             <>

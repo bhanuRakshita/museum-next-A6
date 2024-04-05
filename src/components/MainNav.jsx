@@ -10,20 +10,22 @@ import Link from "next/link";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useRouter } from "next/router";
+import { addToHistory } from "@/lib/userData";
 
 import { searchHistoryAtom } from "@/store";
+import { removeToken, readToken } from "@/lib/authenticate";
 
 function MainNav() {
   const router = useRouter();
   const [searchField, setSearchField] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
   const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
-
-  const submitHandler = (e) => {
+  let token = readToken();
+  const submitHandler = async (e) => {
     let queryString = `title=true&q=${encodeURIComponent(searchField)}`;
     e.preventDefault();
     setIsExpanded(false);
-    setSearchHistory(current => [...current, queryString]);
+    setSearchHistory(await addToHistory(`title=true&q=${searchField}`));
     router.push(
       `/artwork?title=true&q=${encodeURIComponent(searchField)}`
     );
@@ -36,6 +38,12 @@ function MainNav() {
   const toggleIsExpanded = () => {
     setIsExpanded(!isExpanded);
   };
+
+  const logout = () => {
+    setIsExpanded(false);
+    removeToken();
+    router.push("/login");
+  }
 
   return (
     <Navbar
@@ -51,6 +59,38 @@ function MainNav() {
         />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto">
+            {!token && <nav>
+              <Link href="/" passHref legacyBehavior>
+              <Nav.Link
+              active={router.pathname === "/"}
+                onClick={() => {
+                  setIsExpanded(false);
+                }}
+              >
+                Home
+              </Nav.Link>
+            </Link>
+            <Link href="/register" passHref legacyBehavior>
+              <Nav.Link
+              active={router.pathname === "/"}
+                onClick={() => {
+                  setIsExpanded(false);
+                }}
+              >
+                Register
+              </Nav.Link>
+            </Link>
+            <Link href="/login" passHref legacyBehavior>
+              <Nav.Link
+              active={router.pathname === "/"}
+                onClick={() => {
+                  setIsExpanded(false);
+                }}
+              >
+                Login
+              </Nav.Link>
+            </Link>
+              </nav>}
             <Link href="/" passHref legacyBehavior>
               <Nav.Link
               active={router.pathname === "/"}
@@ -61,7 +101,7 @@ function MainNav() {
                 Home
               </Nav.Link>
             </Link>
-            <Link href="/search" passHref legacyBehavior>
+            {token && <Link href="/search" passHref legacyBehavior>
               <Nav.Link
               active={router.pathname === "/search"}
                 onClick={() => {
@@ -70,9 +110,9 @@ function MainNav() {
               >
                 Advanced Search
               </Nav.Link>
-            </Link>
+            </Link>}
           </Nav>
-          <Form className="d-flex" onSubmit={submitHandler}>
+          {token && <Form className="d-flex" onSubmit={submitHandler}>
             <Form.Control
               type="search"
               placeholder="Search"
@@ -84,10 +124,10 @@ function MainNav() {
             <Button variant="outline-success" type="submit">
               Search
             </Button>
-          </Form>
+          </Form>}
           &nbsp;
           
-            <NavDropdown title="User Name" id="basic-nav-dropdown">
+            {token && <NavDropdown title={token.userName} id="basic-nav-dropdown">
               <Link href="/favourites" passHref legacyBehavior>
                 <NavDropdown.Item active={router.pathname === "/favourites"} onClick={() => {
                   setIsExpanded(false);
@@ -102,7 +142,13 @@ function MainNav() {
                   Search History
                 </NavDropdown.Item>
               </Link>
-            </NavDropdown>
+              <NavDropdown.Item active={router.pathname === "/favourites"} onClick={() => {
+                  setIsExpanded(false);
+                  logout();
+                }}>
+                  Logout
+                </NavDropdown.Item>
+            </NavDropdown>}
           
         </Navbar.Collapse>
       </Container>

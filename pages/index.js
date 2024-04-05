@@ -1,14 +1,14 @@
 /*********************************************************************************
-*  WEB422 – Assignment 5
+*  WEB422 – Assignment 6
 *
 *  I declare that this assignment is my own work in accordance with Seneca's
 *  Academic Integrity Policy:
 * 
 *  https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html
 * 
-*  Name: Bhanu Rakshita Paul   Student ID: 143428217    Date: March 8, 2024
-*  Github Link: https://github.com/bhanuRakshita/museum-next-A5
-*  Render Link: https://museum-next-a5.onrender.com/
+*  Name: Bhanu Rakshita Paul   Student ID: 143428217    Date: April 5, 2024
+*  Github Link: https://github.com/bhanuRakshita/museum-next-A6
+*  Render Link: 
 *
 ********************************************************************************/ 
 

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Card, Button } from "react-bootstrap";
 import { favouritesAtom } from "@/store";
+import { addToFavourites, removeFromFavourites } from "@/lib/userData";
 
 const ArtworkDetail = ({objectID}) => {
 
@@ -24,12 +25,12 @@ const ArtworkDetail = ({objectID}) => {
     }
   }, [favouritesList, objectID]);
 
-  const favouritesClicked = () => {
+  const favouritesClicked = async () => {
     if(showAdded) {
-      setFavouritesList(current => current.filter(fav => fav != objectID));
+      setFavouritesList(await removeFromFavourites(objectID));
       setShowAdded(false);
     } else {
-      setFavouritesList(current => [...current, objectID]);
+      setFavouritesList(await addToFavourites(objectID));
       setShowAdded(true);
     }
   }
