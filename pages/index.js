@@ -8,7 +8,7 @@
 * 
 *  Name: Bhanu Rakshita Paul   Student ID: 143428217    Date: April 5, 2024
 *  Github Link: https://github.com/bhanuRakshita/museum-next-A6
-*  Render Link: 
+*  Render Link: https://museum-next-a6.onrender.com/
 *
 ********************************************************************************/ 
 
